@@ -1,0 +1,76 @@
+Brute Force
+
+exhausitive search
+
+simple, correct
+good when errors are critical(don't core about efficiency)
+
+
+
+generate test
+
+more difficult
+
+
+x = first()
+while(x != null){
+	if(valid(x))
+		then output x
+	x=next()
+}
+
+Basic combinations
+	exponential n^k (number of functions from [n] to [k])
+	factorial n!
+	binomial coefficient C(n,k) Order doesn't matter
+	C(n+k,k), C(n+k,n)
+
+Estimate the number of basic operations
+CPU speed 10^9 flops
+checking passwords: 256 chars
+length=5 ->256^5=10^12
+
+reduce search space to speed up BF
+assume that only letter&numbers are allowed
+then 62^5<10^9 tractable
+queens problem(place 8 queens on a chessboard so that they can't capture each other)
+
+very naive 64^9~1.8*10^16
+disregarding trees:  64!/56!~8*10^14
+all queens are identical: C(64, 8)~4.4*10^9
+
+
+
+Backtracking
+
+search space as tree structure
+partial solutions(internal nodes)
+	discuss if cannot be completed
+	reserve whole subtree(pruning)
+build subtrees incrementally
+
+constraint satification problem(CSP)
+	find some assignment for some variables so that constraints are satisfied
+backtrace(c)
+	if(completed(c)) then return true
+	for S belong to next(c) do
+		if(valid(s)) and backtrace(s) do
+			return true
+	return false
+initially backtrack(root)
+examples: CSP find integers(x1...xn) satisfying between 
+
+partial solutions (y1...yk)
+
+
+
+How to generate all permutations:
+lexicographically
+
+	start with smallest permu
+	find largest index k: a[k]<a[k+1]
+	if k doesn't exist, then this is the last permutation
+	find largest index of l   a[k] < a[l]
+	swap values a[k] and a[l]
+	reverse sequence from a[k+1] up to a[n]
+

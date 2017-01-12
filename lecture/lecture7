@@ -1,0 +1,54 @@
+Greedy algorithm
+heuristic
+
+advantage:
+simple, easy
+disadvantage:
+on guarantee on performance
+
+make the locally optimial choices
+never reconsider choices
+works for optimal substructure
+->problem can be reduced to subproblems with greedy choices
+
+Examples: Prime's/Kruskal for MST
+	  Dijkstra's for shortest path
+
+not optimal:
+0-1 knapsack 3 items (weight/value), max value=4
+
+50%
+0-many knasack:
+	greedy to ration value/weight
+
+optimal:	
+fractional knapsack
+
+TSP:
+find subset of objects which f maximize 
+
+Matroid
+general description of independence(both for graph theory and linear algebra)
+two equivalent problem-MST
+	matrix A, what is rank(A)^2 : linear independent coluns in A
+with weights for the columns
+->find a minim cost max-independent set
+
+Connection:for all e=(i,j) add column to A with 1 in jth column and 1 in the ith row
+
+ (a,b) (a,c) (b,c)
+a
+b
+c
+d
+
+Given: weight w(x) for each belong to X
+black box algorithm for independence
+greedy algorithm maintains a set B
+adding min-weight elements in each step maintaining ind.
+
+Does greedy find a min-weight max-indset of the matroid?
+Yes!
+Theorem: matroid M = (X,I), greedy algorithm(iteratively placing the the cheapest element while maintaining ind)
+
+greedy produces a min-weight max-indset for all non negative F <-> M is a Matroid

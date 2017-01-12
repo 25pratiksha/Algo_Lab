@@ -1,0 +1,41 @@
+Breadth-First Search(BFS)
+1. array visited with visited[i]=false for each V
+2. choose a starting node s
+3. add s to a queue Q
+4. while Q is not empty
+5.	v=Q.pop()
+	if(visited[v]=false)
+6.		visited[v]=true
+7.		for all neighbours w of v
+8.			add w to Q
+
+Depth-First Search(DFS)
+
+in the 3rd step, add s to a stack instead of a queue
+
+Topological Sorting
+-assign a number to each node of directed graph
+-edges go from nodes with smaller numbers to bigger numbers only
+
+visiting ordered a BFS
+starting node needs indegree 0
+
+Graphs may have topological sorting
+-check your result
+
+Minimum Spanning Tree
+-weighted undirected graph
+-spanning tree G'=(V,S) with S is a subset of E
+G' is a tree(connected, no cycles)
+minimum overall weight
+
+Kruskal algorithm
+
+1. sort all edges by increasing weight
+2. initialize a union-find data structure
+3. interate all edges e
+4. 	if nodes are not in the same component
+5.	add e to MST, merge these nodes
+Graph is not connected if not all nodes are in the same component
+Running time |E|log|E|+2find+|V|union   complexity |E|log|E|
+

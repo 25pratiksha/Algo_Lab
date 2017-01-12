@@ -1,0 +1,57 @@
+BigInteger
+Problem:
+-How to handle integers bigger than 64 bits
+-Number system with base b: digits 0, 1...b-1
+valid digits
+
+sum of a0,...,an and b0,...,bn is x0,...,xn
+
+
+Rationals
+rational = numerator/denominator = n/d
+a/b+n/m = am+bn/bm
+
+a/b*n/m=an/bm
+
+simply rationals n/d
+
+gcd(a,0)=a
+gcd(a,b)=gcd(b,a%b)
+
+LCM(a,b)=a*b/gcd(a,b)
+
+Tries
+-concept saves data like a dictionary
+
+-value of a node: letters along the path to the root
+-values of a trie: values of the marked nodes
+-compression: add multiple letters to a node
+-lookup: O(n) length of the word
+-construction O(nm) m words
+
+Segment Trees
+-data structure over intervals
+-lowest level: n elemental intervals
+-above: binary tree
+-interval corresponding to node y
+	1,4
+  1,2	     3,4
+1,1 2,2    3,3 4,4
+
+-given some intervals, how many of them contain number x
+-two types of queries: insert/find
+-data count c for each node
+
+int() is interval
+
+insert(interval i, node y)
+	if i=int(y) then c[y]++ return
+	for all children z of y
+		if i intersect int(z) != empty then
+			insert (i intersect int(z), z)
+
+insert is O(lg(n))
+
+find(integer x, node y)
+	if y is a leaf then return c[y]
+	else c[y]+find(x, child z of node y with x belong to int(z))

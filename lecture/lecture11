@@ -1,0 +1,65 @@
+Geometry:
+
+-side of a line from point a to point b
+-if ax=bx then
+	M0={px<ax}
+	M1={px=ax}
+	M2={px>ax}
+else represent the line as y=mx+n
+m=(ay-by)/(ax-bx)
+n=ay-max
+	M0={y>mx+n}
+	M1={y=mx+n}
+	M2={y<mx+n}
+
+subtracting is a bad operation
+
+ab is a line
+CCW(a, b, p)=
+|1  1  1 |
+|ax bx px| = bxpy+pxay+axby-bxay-pxby-axpy
+|ay by py|
+<0 clock wise
+=0 on line
+>0 counter clock wise
+
+-given points for p0,p1...pn-1 q
+test whether it is inside the polygon
+-ray casting algorithm
+-choose a ray starting at q
+
+-for each edge of the polygon check whether it intersects the ray
+-number is odd<==> inside the polygon
+
+if just pass by, take another direction
+
+-convex set if for each points p,q the line segment pq is contained in M
+
+-convex hull of a set M: smallest convex set containing M
+
+lexicographically smallest/largest point
+(smallest x-coordinate, use y-coordinate as tiebreaker)
+
+Gift wrapping
+-find one vertex p of the convex hull, add it to the convex hull
+-iterate through all other points: select a point q so that is not a vertex of the convex hull yet, but all points are on the same side of pq
+-p=q, repeat
+-runtime: O(n^3), take left most neighbours c(n^2)
+putput sensitive: convex hull has h points O(nh)
+
+Graham scan
+-save convex hull as a stack
+-find one vertex of the convex hull, add it to the stack
+-order all other points by the angle of the line pq and the y-axis counter-clockwise
+-add the first point to the stack
+-iterate through the other points r
+	-if r is on the left or on the line between two top-most points of the stack
+	-remove the last point from the stack
+	-execute the lloop again for r
+	else
+	add r to the stack
+
+Other algorithms:
+quick hull
+andrews mootone chain algorithm
+kirkpatrick-seidel algorithm

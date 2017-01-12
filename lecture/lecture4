@@ -1,0 +1,52 @@
+Short paths
+weighted, directed graph G=(V,E)
+	with weights c
+path from u to v (u,w1),(w1,w2)...(wn,v)
+Simple paths have disjoint nodes
+length: sum of the edges' weights
+
+Variants:
+SPSP: Single pair shortest path
+SSSP: from source to all other nodes
+APSP: All pairs
+
+Dijkstra's Algorithm
+
+Choose a starting node s from V
+visited[s]=true, dist[s]=0, pred[s]=null
+visited[v]=false, dist[v]=infinity for all other nodes
+add all nodes which are adjacent to s to a PQ
+	(key dis[s]+weight of connecting edges)
+while not all nodes are visited
+	w=PQ.deleteMin()
+	dist[w]=weight in PQ
+	pred[w]=other node on the edge to w
+	visited[w]=true
+	add all unvisited neighbours of w to PQ
+	(key dis[s]+===weight of connecting edges)
+	or if already contained with highest key decrease
+
+Prim's algorithm
+use only the weight instead of dis[s]+weight
+
+n insert O(n)
+m decreasekey O(m)
+n deleteMin O(nlogn)
+=> O(n)+O(m)+O(nlogn)
+
+
+Bellman-Ford algorithm:
+dist[s]=0, pred[s]=null
+dist[v]=infinity for all other nodes
+add s to a queue
+while queue is not empty
+	w = queue.pop()
+	for all neighbours v of w
+		if dist[v]>dist[w]+c(w,v)
+			dist[v]=dist[w]+c(w,v)
+			pred[v]=w
+			add v to the queue
+
+Termination: processing the queue once = one phase
+After n phases: all simple SP
+O(nm)

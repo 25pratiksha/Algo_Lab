@@ -1,0 +1,56 @@
+MI 03.09.051
+
+公式
+http://blog.csdn.net/fox64194167/article/details/8147460
+
+Projective Geometry
+
+Points
+-use three-dimensional vectors to save two-dimensional points
+not (0,0,0)
+
+-represent a point (a,b) as the vector(a,b,1) (homogenization)
+-normalization: scale the last component to 1
+(multiply (a,b,c) by c^-1)
+-de-homogonization: normalize, ignore last component
+(4,6,2)->(2,3,1)->(2,3)
+-scalar multiples represent the same point
+-de-homogonization is not possible if the last component is 0
+
+Lines
+-represented by three-dimensional vectors, too
+not(0,0,0)
+-generate a plane by the line and (0,0,0), take a normal vector
+-scalar multiples represent same line
+-one line is not contained in space(R^2): line at infinity represented by (0,0,1)
+
+point p is on a line l <=> inner product <p,l>=0
+
+line l through points p and q: L=p*q
+
+intersection points of two lines l and m: p=l*m
+
+l = b*d
+m = a*c
+p = l*m = b*d*a*c
+
+points at infinity
+-intersections of parallel lines
+(1,0,1)*(2,0,1)=(0,1,0)
+direction of the lines
+
+-connection of them is the line at infinity
+(1,0,0)*(0,1,0)=(0,0,1)
+use special cases
+parallel line m to a line l through point p
+q=l*(0,0,1)
+m=p*q=p*l*(0,0,1)
+-orthogonal direction to (a,b,0) is (-b,a,0)
+-projection q of point p to line l
+a=l*(0,0,1), m=p*a
+q=l*m-l*p-(l*(0,0,1))
+area of a triangle through points p, t, q
+
+projective transformations:
+-Linear map on homogenous coordinates
+-take a 3 dimensional matrix A, map p to Ap

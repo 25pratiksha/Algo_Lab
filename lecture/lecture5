@@ -1,0 +1,56 @@
+Flow Algorithms
+directed graph G=(V,E)
+capacity C:E->R+, s,t from V
+Flow: f:E->R with
+1. capacity constraint
+0<=f(e)<=c(e)
+2. flow conversation
+flow into e = flow out from e
+Preflow:
+flow into e >= flow out from e
+value of a flow
+v(f)=e(t)=e(s)
+problem: find a maximum flow
+
+Residual Network : how many flows can increase, decrease
+graph G'=(V,E')
+capacity c':E'->R+
+for all e=(v,w) from E
+1. if f(e)<c(e) then add (v,w) to E'
+c'(e) = c(e)-f(e)
+2. If f(e)>0 then add e'=(w,v) to E'
+c'(e')=f(e)
+
+Algorithm of Dinic
+-find paths from s to t in the residual network
+-increment flow along this path by the minimum capacity in G'
+
+Algorithm of Dinic: increment along shortest path->O(V^2|E|)
+
+
+Algorithm of Goldberg and Tarjan
+-height/distance: d:V->N0
+-legal edge(v,w): d(v)=d(w)+1
+-active node v:e(v)>0
+
+1.remove all nodes that are not reachable from s and nodes where t is not reachable
+2.set f(e)=c(e) if e=(s,v) for some v from V, else f(e)=0
+3.Initialize a queue of active nodes Q
+4.initialize d as the shortest distance to t(unit length) without using s by a BFS, set d[s]=|V|
+5.While Q is not empty remove the first element and apply push()
+
+push(v)
+1.while e(v)>0 and there is a legal edge e=(v,w) in the residual network
+2.	push delta = min(e(v),c'(e)) from v to w
+3.	adjust excess values and the residual graph, add w to Q if w!=s and w!=t
+4.if e(v)>0 then relabel(v)
+
+relabel(v)
+1.set d[v]=min{d(w)+1 | (v,w) from E'}
+2.add v to Q
+
+running time: O(|V|^3)
+
+Gap Heuristics
+-save an array: count with count[i]=number of nodes with label i
+-if count[x]=0 then set d[v]=|V|+1 for all v from V with x < d[v] < |V|
